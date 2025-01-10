@@ -1,0 +1,24 @@
+
+Basic command
+    • Create react app
+npm create vite@4.1.0   -sledi korakom (dolo?i ime application)
+    • Nadaljne komande za prvi zagon projekta
+ cd appFolder
+  npm install 
+    • Poženi react application
+  npm run dev
+
+Additional installation
+    • Install bootstarp
+npm i bootstrap@5.2.3
+
+
+
+
+Links
+
+https://babeljs.io/repl
+
+youtube:
+Node version: ( v19.6.0 )
+https://youtu.be/SqcY0GlETPk?t=319
