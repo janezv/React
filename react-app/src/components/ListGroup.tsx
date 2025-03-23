@@ -1,44 +1,43 @@
 import { useState } from "react";
 
-function ListGroup() {
-  let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
+interface Props {
+  items: string[];
+  heading: string;
+  onSelectItem: (item: string) => void;
+}
+
+function ListGroup({ items, heading, onSelectItem }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
-  let [exponent, setExponent] = useState(0);
+
+  // items = [];
 
   return (
     <div className="container">
-      <h1>List</h1>
       <div className="row">
-        <div className="col-6 ">
-          <h2
-            onClick={() => {
-              console.log("sem kliknjen");
-              setExponent(8);
-            }}
-          >
-            {exponent}
-          </h2>
-        </div>
+        <h1>{heading}</h1>
       </div>
-      {items.length === 0 && <p>No Items Found </p>}
-      <ul className="list-group">
-        {items.map((item, index) => (
-          <li
-            className={
-              selectedIndex === index
-                ? "list-group-item active"
-                : "list-group-item"
-            }
-            style={{ cursor: "pointer" }}
-            key={item}
-            onClick={() => {
-              setSelectedIndex(index);
-            }}
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
+      <div className="row">
+        {items.length === 0 && <h2>No Items Found </h2>}
+        <ul className="list-group">
+          {items.map((item, index) => (
+            <li
+              className={
+                selectedIndex === index
+                  ? "list-group-item active"
+                  : "list-group-item"
+              }
+              style={{ cursor: "pointer" }}
+              key={item}
+              onClick={() => {
+                setSelectedIndex(index);
+                onSelectItem(item);
+              }}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
